@@ -1,0 +1,36 @@
+# Arquivos de sistema operacional (macOS, Windows, Linux)
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+
+# Arquivo PDF gerado
+# Ignora todos os arquivos .pdf na pasta principal e em subpastas
+*.pdf
+
+# Arquivos auxiliares e de compilação do LaTeX
+# Esses arquivos são gerados durante a compilação e não precisam ser versionados
+*.aux
+*.bbl
+*.blg
+*.log
+*.lof
+*.lot
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+
+# Pasta de cache de pacotes como 'minted' ou 'pygments'
+_minted/
+
+# Arquivos de configuração de compiladores como 'latexmk'
+latexmkrc
+
+# Arquivos e pastas de editores/IDEs
+# Ignora configurações locais do VS Code
+.vscode/
