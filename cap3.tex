@@ -1,5 +1,5 @@
 \chapter{\textbf{METODOLOGIA}}
-\section{Levantamento Exploratório de Tecnologias Assistivas}
+\section{\textbf{Levantamento Exploratório de Tecnologias Assistivas}}
 
 Nesta etapa, é realizado um levantamento de soluções tecnológicas assistivas que utilizam visão computacional para auxiliar pessoas com deficiência visual. O foco é identificar abordagens técnicas recentes, algoritmos eficazes e boas práticas relevantes para aplicações de detecção de objetos em tempo real.
 
@@ -9,7 +9,7 @@ Para confirmar a escolha, são testadas diferentes versões do YOLO (v8 a v11) s
 
 Além da análise técnica, também é avaliada a viabilidade de implementação em ambientes externos e a clareza do feedback auditivo. A solução final é planejada com base em três objetos de interesse: bancos, faixas de pedestre e placas de ponto de ônibus, priorizando robustez, baixo custo computacional e utilidade prática no contexto do campus.
 
-\section{Ferramentas, Recursos e Ambiente de Desenvolvimento}
+\section{\textbf{Ferramentas, Recursos e Ambiente de Desenvolvimento}}
 
 O sistema é desenvolvido na linguagem Python 3.11.12, com execução em notebooks Jupyter no ambiente Google Colab. Essa plataforma oferece acesso gratuito a GPUs NVIDIA Tesla T4 com 15 GB de VRAM, viabilizando o treinamento eficiente do modelo sem a necessidade de \textit{hardware} local. Os arquivos de vídeo, datasets e modelos treinados são armazenados no Google Drive, facilitando a integração e continuidade do projeto em diferentes dispositivos.
 
@@ -31,7 +31,7 @@ A Figura \ref{fg-tecnologias-logos} mostra visualmente as principais tecnologias
 \end{figure}
 % --- FIM Figura
 
-\section{Coleta de Dados Visuais no Ambiente-Alvo}
+\section{\textbf{Coleta de Dados Visuais no Ambiente-Alvo}}
 
 A coleta de dados visuais é realizada no campus Pampulha da UFMG, ambiente escolhido por reunir circulação real de estudantes e variabilidade de cenários urbanos, como ruas internas, praças e paradas de ônibus. As gravações ocorrem em múltiplos dias e horários, abrangendo diferentes condições de luminosidade (manhã, tarde e noite) e de fluxo de pessoas, a fim de garantir diversidade nos dados. As Figuras \ref{fg-exe_grav_dia} e \ref{fg-exe_grav_noite} mostram exemplos diurnos e noturnos das fotos utilizadas.
 
@@ -63,7 +63,7 @@ Ao longo da coleta, são priorizados pontos do campus que contenham os três obj
 
 A extração de imagens dos vídeos é feita na plataforma Roboflow, resultando em aproximadamente 600 frames anotados. Cuidados éticos são tomados: evita-se focar em rostos ou informações pessoais, e os dados são usados exclusivamente para fins acadêmicos. Essa etapa assegura que o modelo seja treinado com dados realistas, aumentando sua robustez e aplicabilidade prática no mesmo ambiente onde será utilizado.
 
-\section{Preparação do \textit{Dataset} Personalizado}
+\section{\textbf{Preparação do \textit{Dataset} Personalizado}}
 
 O dataset personalizado é construído com base em imagens extraídas dos vídeos gravados no campus Pampulha da UFMG. As três classes definidas para reconhecimento são: banco, faixa\_pedestre e placa\_onibus, escolhidas por sua relevância na navegação de pessoas com deficiência visual. Os frames são selecionados de forma a abranger diferentes horários do dia e níveis de ocupação do campus, garantindo diversidade nas condições de captura.
 
@@ -117,7 +117,7 @@ A divisão final considera 88\% das imagens para treinamento e 12\% para valida�
 \end{figure}
 % --- FIM Figura
 
-\section{Pré-processamento e \textit{Data Augmentation}}
+\section{\textbf{Pré-processamento e \textit{Data Augmentation}}}
 
 As etapas de pré-processamento e \textit{data augmentation} são executadas diretamente na plataforma Roboflow, com o objetivo de padronizar e diversificar as imagens do dataset. Todas as imagens são redimensionadas para 640×640 pixels, formato exigido pelo modelo YOLOv11, e passam por um processo automático de auto-orientação, que corrige a rotação de imagens capturadas em ângulos variados.
 
@@ -127,7 +127,7 @@ Cada imagem anotada gera três novas variações, aumentando o número de exempl
 
 Esse aumento sintético permite ampliar a capacidade de generalização do modelo mesmo com uma base original limitada. A aplicação de \textit{augmentations} realistas contribui diretamente para o bom desempenho do sistema em ambientes com diferentes condições de iluminação, movimento e visibilidade, como será evidenciado nos resultados.
 
-\section{Treinamento do Modelo com o YOLOv11 personalizado}
+\section{\textbf{Treinamento do Modelo com o YOLOv11 personalizado}}
 
 O modelo é treinado a partir da arquitetura YOLOv11, utilizando como base o yolo11m.pt, fornecido pela Ultralytics. Essa versão apresenta um bom equilíbrio entre precisão e velocidade de inferência, sendo adequada para dispositivos com recursos computacionais moderados. O treinamento é realizado na plataforma Google Colab com GPU NVIDIA Tesla T4, utilizando Python 3.11.12 e a biblioteca oficial Ultralytics.
 
@@ -139,7 +139,7 @@ Esse comando define a tarefa de detecção, usa o modelo base YOLOv11m, executa 
 
 A cada época, o desempenho é validado com base nas métricas \textit{Precision}, \textit{Recall}, mAP@0.5 e mAP@0.5:0.95. O melhor modelo é salvo automaticamente em runs/detect/ufmg\_yolov11m\_run1/weights/best.pt. O processo completo leva menos de 1 hora, com estabilidade nas curvas de perda e sem indícios de \textit{overfitting}, o que indica que o modelo está generalizando bem para os dados de validação.
 
-\section{Validação e Avaliação de Desempenho do Modelo}
+\section{\textbf{Validação e Avaliação de Desempenho do Modelo}}
 
 A validação é conduzida com 12\% do conjunto de dados reservados exclusivamente para esse fim. Esse subconjunto inclui imagens em diferentes horários do dia, com variações de iluminação, distância e presença de oclusões parciais. O objetivo é verificar a capacidade de generalização do modelo YOLOv11 treinado e mensurar seu desempenho em condições realistas de uso.
 
@@ -151,7 +151,7 @@ Os resultados incluem métricas padrão: \textit{Precision} (0.921), \textit{Rec
 
 O tempo médio de inferência é de 29,1 ms por imagem, com pré-processamento em torno de 4,0 ms e pós-processamento de 4,8 ms, demonstrando viabilidade para aplicações em tempo quase real. As curvas de perda e gráficos de desempenho gerados pela biblioteca Ultralytics mostram uma convergência estável sem indícios de overfitting. Também é realizada uma validação qualitativa com novos vídeos capturados no campus, confirmando a precisão das detecções em ambientes não vistos pelo modelo.
 
-\section{Testes em Vídeos Reais e Análise Qualitativa}
+\section{\textbf{Testes em Vídeos Reais e Análise Qualitativa}}
 
 Para avaliar o desempenho do sistema em condições reais de uso, são realizados testes com vídeos distintos dos utilizados no treinamento e validação. As gravações são feitas com o celular preso à altura do peito, simulando a perspectiva de um usuário durante o deslocamento no campus Pampulha da UFMG. Os testes abrangem diferentes horários do dia, condições de iluminação e variação de ocupação do ambiente.
 
@@ -161,7 +161,7 @@ Além das detecções visuais, também é testado o funcionamento do sistema de 
 
 As limitações observadas incluem quedas na confiança durante cenas noturnas ou com iluminação artificial intensa, além de falhas pontuais na detecção de objetos em ângulos extremos. Apesar disso, os testes confirmam que o sistema é funcional em contextos diversos, com desempenho robusto e usabilidade promissora, servindo como prova de conceito viável para aplicações futuras em tempo real.
 
-\section{Geração de \textit{Feedback} Auditivo a partir das Detecções}
+\section{\textbf{Geração de \textit{Feedback} Auditivo a partir das Detecções}}
 
 Nesta etapa, o sistema converte as detecções visuais em mensagens sonoras, possibilitando que pessoas com deficiência visual compreendam a presença e a localização de objetos no ambiente. A conversão é feita com a biblioteca gTTS, que transforma textos em áudios no idioma português. A cada detecção válida, o sistema gera frases como “faixa de pedestre à frente” ou “banco à esquerda”, que são sincronizadas com o vídeo correspondente.
 
@@ -171,7 +171,7 @@ O áudio gerado é sincronizado com os frames do vídeo utilizando a biblioteca 
 
 O processamento final gera um vídeo com detecções visuais sobrepostas e alertas sonoros integrados, simulando o uso real do sistema. Toda a implementação é feita em Python, com as bibliotecas Ultralytics, OpenCV, gTTS, MoviePy, NumPy e logging. O código está disponível no GitHub\footnote{\url{https://github.com/seu-usuario/seu-repositorio}} e modularizado para facilitar manutenção e reuso. O resultado demonstra que o sistema é capaz de traduzir informações visuais em mensagens acessíveis, aproximando-se de uma solução funcional de tecnologia assistiva.
 
-\section{Considerações Éticas e Limitações da Implementação}
+\section{\textbf{Considerações Éticas e Limitações da Implementação}}
 
 A coleta de dados visuais é realizada exclusivamente em áreas públicas do campus Pampulha da UFMG, com foco em objetos de interesse definidos previamente. O projeto evita a identificação de pessoas e não armazena dados sensíveis. Em casos em que indivíduos aparecem incidentalmente nos vídeos, não ocorre qualquer tentativa de reconhecimento facial ou extração de informações pessoais, e as imagens são utilizadas apenas para treinamento interno do modelo.
 
@@ -181,17 +181,7 @@ Entre as principais limitações, destaca-se o fato de que o sistema opera com v
 
 Variações ambientais, como baixa iluminação, obstruções visuais e mudanças climáticas, também impactam a confiabilidade do sistema. O posicionamento da câmera no corpo do usuário pode gerar distorções na detecção, exigindo padronização ou mecanismos adaptativos. Embora os testes realizados indiquem bons resultados, a validação com usuários reais ainda é necessária para aferir a clareza dos alertas, o conforto auditivo e a efetividade da solução em situações cotidianas.
 
-\section{Estrutura de Arquivos, \textit{Logs} e Reprodutibilidade}
-
-O projeto é organizado em uma estrutura de pastas que favorece a reprodutibilidade, o versionamento dos resultados e a clareza nas etapas de execução. Quatro diretórios principais são utilizados: /scripts, que contém todos os códigos-fonte em Python divididos por função (treinamento, validação, inferência, feedback auditivo e montagem final de vídeos); /datasets, que armazena as imagens e anotações em formato YOLO organizadas nas pastas train/ e val/; /runs, onde a biblioteca Ultralytics salva automaticamente os pesos dos modelos e os logs de desempenho; e /outputs, que concentra os vídeos processados, com e sem áudio.
-
-Além desses, é criada a pasta /logs, destinada ao armazenamento dos arquivos .log gerados pela biblioteca logging. Cada execução registra \textit{timestamp}, classe detectada, nível de confiança e posição relativa dos objetos (esquerda, centro ou direita). Esses registros possibilitam auditoria dos resultados, análise estatística posterior e identificação de falhas de detecção ou inconsistência no feedback auditivo.
-
-O código é modularizado em \textit{scripts} independentes com parâmetros personalizáveis, favorecendo o reaproveitamento por outros usuários. Cada função do sistema, desde a importação do \textit{dataset} até a geração do vídeo final com feedback auditivo, está encapsulada em células distintas no Jupyter Notebook, com comentários explicativos e exemplos de uso. Essa abordagem facilita a reprodução dos experimentos por terceiros com mínimas alterações, como a troca de vídeos ou modelos de detecção.
-
-O repositório público do projeto no GitHub inclui um arquivo README.md com instruções detalhadas de instalação e uso, além de um requirements.txt que lista todas as bibliotecas utilizadas (incluindo ultralytics, opencv-python, gtts, moviepy, numpy e torch, entre outras). Todos os testes são conduzidos no Google Colab com configuração consistente de ambiente, garantindo que o experimento possa ser replicado fielmente. Essa estrutura de organização e documentação é um diferencial que assegura a validade metodológica do trabalho e contribui para sua disseminação acadêmica.
-
-\section{Considerações Finais}
+\section{\textbf{Considerações Finais}}
 
 Este trabalho adota uma abordagem aplicada e experimental, com foco na construção de uma solução funcional voltada à assistência de pessoas com deficiência visual no campus da UFMG. A proposta parte de um problema real e busca resolvê-lo com o uso de tecnologias existentes, integradas de forma prática, iterativa e mensurável.
 

@@ -1,5 +1,5 @@
 \chapter{\textbf{ANÁLISE E RESULTADOS}}
-\section{Introdução à Análise de Resultados}
+\section{\textbf{Introdução à Análise de Resultados}}
 
 Este capítulo apresenta a análise e discussão dos resultados obtidos no desenvolvimento do sistema de detecção de objetos e espaços no campus Pampulha da UFMG, com foco em sua aplicação como ferramenta assistiva para pessoas com deficiência visual. A avaliação tem como principal objetivo verificar a eficácia do modelo yolo11m.pt treinado com um \textit{dataset} personalizado, considerando tanto aspectos quantitativos quanto qualitativos do seu desempenho.
 
@@ -9,7 +9,7 @@ Inicialmente, o capítulo aborda a caracterização do \textit{dataset} utilizad
 
 Complementarmente à análise numérica, são incluídas observações qualitativas baseadas em detecções reais em vídeos e imagens, buscando evidenciar situações práticas de acerto, erro e limitação do sistema. Por fim, é realizada uma discussão integrada dos resultados, com reflexões sobre o potencial do modelo como componente central de uma solução assistiva.
 
-\section{Caracterização do \textit{Dataset} e Configuração Detalhada do Treinamento}
+\section{\textbf{Caracterização do \textit{Dataset} e Configuração Detalhada do Treinamento}}
 
 A qualidade e a representatividade do conjunto de dados são fatores determinantes para o desempenho de modelos baseados em aprendizado profundo, especialmente em aplicações de visão computacional. O \textit{dataset} utilizado neste trabalho foi construído com imagens capturadas no campus Pampulha da UFMG, abrangendo diferentes condições de luminosidade, horários do dia e contextos de ocupação do espaço. O objetivo foi garantir diversidade suficiente para permitir a generalização do modelo frente às variações ambientais do local de aplicação.
 
@@ -36,7 +36,7 @@ A configuração dos hiperparâmetros foi gerenciada pela biblioteca Ultralytics
 
 Em síntese, a construção criteriosa do \textit{dataset} e a configuração adequada do processo de treinamento formaram uma base sólida para os resultados apresentados nas seções subsequentes. A diversidade de cenários contemplados, aliada ao uso de técnicas de \textit{data augmentation}, contribuiu significativamente para a robustez do modelo treinado frente às condições reais de aplicação no ambiente universitário.
 
-\section{Análise do Processo de Convergência do Modelo durante o Treinamento}
+\section{\textbf{Análise do Processo de Convergência do Modelo durante o Treinamento}}
 
 A análise das curvas de convergência durante o treinamento do modelo yolo11m.pt fornece informações essenciais sobre a eficácia do processo de aprendizado e sobre a estabilidade das métricas de desempenho ao longo das épocas. A Figura \ref{fg-results} compila os gráficos gerados pela biblioteca Ultralytics, apresentando a evolução das funções de perda e métricas de \textit{precision} e \textit{recall} tanto para o conjunto de treinamento quanto para o conjunto de validação.
 
@@ -61,7 +61,7 @@ As métricas de \textit{precision} e \textit{recall} apresentaram curvas consist
 
 Conclui-se, com base nas curvas de aprendizado e desempenho, que o modelo convergiu de forma eficaz dentro do intervalo estipulado de 80 épocas. A ausência de comportamento instável, a aproximação entre os conjuntos de treinamento e validação e os altos valores de mAP consolidam a confiabilidade do processo de treinamento, justificando a seleção do modelo gerado como base para as avaliações quantitativas e qualitativas posteriores.
 
-\section{Avaliação Quantitativa de Desempenho do Modelo Final}
+\section{\textbf{Avaliação Quantitativa de Desempenho do Modelo Final}}
 
 Finalizado o treinamento, o modelo yolo11m.pt foi avaliado por meio da aplicação do conjunto de pesos otimizados (arquivo best.pt) sobre o subconjunto de validação do \textit{dataset}, contendo 53 imagens e 105 instâncias. Essa validação foi conduzida com a ferramenta Ultralytics, utilizando o comando específico em modo val, responsável por calcular as métricas consolidadas de desempenho para cada classe. Os resultados estão organizados na Tabela \ref{tab:metricas-yolov11m}, que resume as métricas de \textit{precision}, \textit{recall}, mAP@0.5 e mAP@0.5:0.95 por classe e no total.
 
@@ -95,7 +95,7 @@ Ressalta-se que o conjunto de validação utilizado é limitado em tamanho, o qu
 
 Em resumo, os resultados quantitativos obtidos confirmam que o modelo yolo11m.pt treinado apresenta desempenho compatível com aplicações práticas de suporte à navegação assistiva, oferecendo boa acurácia de detecção, baixo índice de erro e estabilidade frente a dados não vistos.
 
-\section{Análise Detalhada de Erros e Acertos com Base na Matriz de Confusão}
+\section{\textbf{Análise Detalhada de Erros e Acertos com Base na Matriz de Confusão}}
 
 A matriz de confusão é uma ferramenta essencial para a avaliação detalhada do desempenho de modelos de classificação, permitindo a identificação dos padrões de acertos e erros em cada classe individualmente. No contexto do modelo, essa análise revela não apenas a eficácia do algoritmo na classificação correta dos objetos, mas também os pontos de maior vulnerabilidade, especialmente no que diz respeito à distinção entre objetos de interesse e o fundo (\textit{background}).
 
@@ -132,7 +132,7 @@ A classe banco, apesar de apresentar um bom desempenho geral, foi a que mais acu
 Em síntese, a análise das matrizes de confusão reforça que o modelo é confiável para aplicações práticas, demonstrando altos índices de acerto e baixa taxa de confusão entre classes. As limitações identificadas são pontuais e passíveis de aprimoramento, sem comprometer a viabilidade da ferramenta assistiva.
 
 
-\section{Relação entre Limiar de Confiança, \textit{Precision}, \textit{Recall} e \textit{F1-Score}}
+\section{\textbf{Relação entre Limiar de Confiança, \textit{Precision}, \textit{Recall} e \textit{F1-Score}}}
 
 O desempenho de modelos de detecção de objetos é influenciado diretamente pelo limiar de confiança utilizado na inferência. Esse parâmetro define o grau mínimo de certeza que o modelo deve ter para considerar uma detecção como válida. Assim, ajustes nesse valor afetam diretamente o equilíbrio entre \textit{precision} (proporção de detecções corretas entre as detectadas) e \textit{recall} (proporção de detecções corretas entre as existentes). A análise das curvas PR e F1 permite entender essa dinâmica de maneira visual e quantitativa.
 
@@ -168,7 +168,7 @@ Analisando individualmente as curvas de \textit{F1-Score} por classe, percebe-se
 
 Em termos de aplicação, especialmente em contextos assistivos, um maior \textit{recall} pode ser preferível, mesmo ao custo de alguns falsos positivos, desde que não comprometa a confiança do usuário no sistema. Assim, as curvas apresentadas servem não apenas como indicadores de desempenho, mas também como ferramentas de calibração para o uso prático do modelo.
 
-\section{Análise Qualitativa das Detecções em Cenários do Campus UFMG}
+\section{\textbf{Análise Qualitativa das Detecções em Cenários do Campus UFMG}}
 
 Para além dos indicadores quantitativos, a análise qualitativa das detecções é fundamental para compreender a atuação prática do modelo em ambientes reais. Essa abordagem permite observar a qualidade visual das caixas delimitadoras, a confiabilidade das detecções em condições variadas e identificar situações específicas em que ocorrem erros, como falsos positivos ou falsos negativos, que podem não ser plenamente capturados pelas métricas agregadas.
 
@@ -226,7 +226,7 @@ Na Figura \ref{fg-falso_negativo}, evidencia-se um caso de falso negativo, em qu
 
 Conclui-se, com base nesta análise qualitativa, que o modelo é robusto para a maioria dos cenários de uso previstos, mas que ainda existem oportunidades de melhoria, especialmente na redução de falsos positivos da classe banco e faixa de pedestre e no aumento da sensibilidade do modelo em situações de iluminação comprometida. Essas observações visuais corroboram os achados estatísticos apresentados nos tópicos anteriores e oferecem subsídios práticos para ajustes na implementação final do sistema assistivo.
 
-\section{Discussão Consolidada dos Resultados e Implicações para a Ferramenta Assistiva}
+\section{\textbf{Discussão Consolidada dos Resultados e Implicações para a Ferramenta Assistiva}}
 
 A consolidação das análises quantitativa e qualitativa permite uma avaliação abrangente do modelo no que diz respeito à sua viabilidade como núcleo de uma ferramenta assistiva para pessoas com deficiência visual no campus da UFMG. Os resultados obtidos ao longo das avaliações apontam para um desempenho consistente, com alto potencial de aplicação prática e algumas limitações pontuais que podem ser endereçadas em fases posteriores do projeto.
 
