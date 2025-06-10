@@ -104,7 +104,18 @@ A anotação dos objetos é realizada manualmente na plataforma Roboflow, utiliz
 
 Após a anotação, o dataset é expandido por meio de técnicas de \textit{data augmentation}, aplicando transformações como espelhamento, ajuste de brilho, saturação, ruído e \textit{blur}. Cada imagem gera três variações adicionais, elevando o número total para 1.444 imagens. Em seguida, os dados são redimensionados para 640x640 pixels e exportados no formato YOLO, com todos os arquivos organizados e enviados diretamente ao Google Colab via API.
 
-A divisão final considera 88\% das imagens para treinamento e 12\% para validação, permitindo avaliar o desempenho durante o ajuste do modelo. A combinação de anotações precisas, variedade visual e aumentos realistas contribui para a robustez do modelo final, tornando essa etapa um dos pilares da qualidade do sistema proposto.
+A divisão final considera 88\% das imagens para treinamento e 12\% para validação, permitindo avaliar o desempenho durante o ajuste do modelo. A combinação de anotações precisas, variedade visual e aumentos realistas contribui para a robustez do modelo final, tornando essa etapa um dos pilares da qualidade do sistema proposto. A Figura \ref{fg-dataset-roboflow} ilustra o \textit{dataset} final na plataforma Roboflow.
+
+% --- INÍCIO Figura
+\begin{figure}[htbp]
+  \centering
+  \caption{Exemplo do \textit{dataset} final na plataforma Roboflow}
+  \includegraphics[width=1 \textwidth]{Figuras/dataset_roboflow.png}
+  \\
+  Fonte: Autoral.
+  \label{fg-dataset-roboflow}
+\end{figure}
+% --- FIM Figura
 
 \section{Pré-processamento e \textit{Data Augmentation}}
 
