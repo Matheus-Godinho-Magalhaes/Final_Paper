@@ -11,11 +11,11 @@ Além da análise técnica, também é avaliada a viabilidade de implementação
 
 \section{\textbf{Ferramentas, Recursos e Ambiente de Desenvolvimento}}
 
-O sistema é desenvolvido na linguagem Python 3.11.12, com execução em notebooks Jupyter no ambiente Google Colab. Essa plataforma oferece acesso gratuito a GPUs NVIDIA Tesla T4 com 15 GB de VRAM, viabilizando o treinamento eficiente do modelo sem a necessidade de \textit{hardware} local. Os arquivos de vídeo, datasets e modelos treinados são armazenados no Google Drive, facilitando a integração e continuidade do projeto em diferentes dispositivos.
+O sistema é desenvolvido na linguagem Python 3.11.12, com execução em notebooks Jupyter no ambiente Google Colab. Essa plataforma oferece acesso gratuito a GPUs NVIDIA Tesla T4 com 15 \textit{Gigabytes} (GB) de \textit{video random-access memory} (VRAM), viabilizando o treinamento eficiente do modelo sem a necessidade de \textit{hardware} local. Os arquivos de vídeo, datasets e modelos treinados são armazenados no Google Drive, facilitando a integração e continuidade do projeto em diferentes dispositivos.
 
 A principal biblioteca utilizada para detecção de objetos é a Ultralytics YOLOv11, escolhida por sua interface simplificada, suporte nativo a datasets customizados e bom desempenho em tarefas de tempo real. O modelo de base adotado é o yolo11m.pt, que apresenta equilíbrio entre velocidade e acurácia. A manipulação e visualização dos resultados ocorrem com a biblioteca OpenCV, responsável pela renderização das \textit{bounding boxes}, rótulos de classe, linhas divisórias na imagem e textos com valores de confiança.
 
-A construção e anotação do dataset são realizadas na plataforma Roboflow, que permite \textit{upload} de imagens, rotulagem precisa, aplicação de técnicas de \textit{data augmentation} e exportação direta para o Colab via API. A ferramenta também fornece relatórios visuais sobre a distribuição das classes e garante controle sobre a divisão entre treino e validação. Para a geração dos alertas sonoros, é usada a biblioteca gTTS, com sincronização de áudio e vídeo feita via MoviePy.
+A construção e anotação do dataset são realizadas na plataforma Roboflow, que permite \textit{upload} de imagens, rotulagem precisa, aplicação de técnicas de \textit{data augmentation} e exportação direta para o Colab via \textit{application programming interface} (API). A ferramenta também fornece relatórios visuais sobre a distribuição das classes e garante controle sobre a divisão entre treino e validação. Para a geração dos alertas sonoros, é usada a biblioteca gTTS, com sincronização de áudio e vídeo feita via MoviePy.
 
 Outras bibliotecas complementares utilizadas incluem NumPy, para verificação de proximidade espacial e aplicação de filtros de debouncing, e logging, para o registro automatizado de eventos e erros durante a execução. Todas as ferramentas utilizadas são de código aberto e amplamente documentadas, promovendo a reprodutibilidade, portabilidade e acessibilidade do sistema.
 
@@ -129,15 +129,15 @@ Esse aumento sintético permite ampliar a capacidade de generalização do model
 
 \section{\textbf{Treinamento do Modelo com o YOLOv11 personalizado}}
 
-O modelo é treinado a partir da arquitetura YOLOv11, utilizando como base o yolo11m.pt, fornecido pela Ultralytics. Essa versão apresenta um bom equilíbrio entre precisão e velocidade de inferência, sendo adequada para dispositivos com recursos computacionais moderados. O treinamento é realizado na plataforma Google Colab com GPU NVIDIA Tesla T4, utilizando Python 3.11.12 e a biblioteca oficial Ultralytics.
+O modelo é treinado a partir da arquitetura YOLOv11, utilizando como base o yolo11m.pt, fornecido pela Ultralytics. Essa versão apresenta um bom equilíbrio entre precisão e velocidade de inferência, sendo adequada para dispositivos com recursos computacionais moderados.
 
 O dataset é importado diretamente da Roboflow via API, contendo imagens, anotações e o arquivo data.yaml. O treinamento é iniciado com o seguinte comando padrão:
 
 !yolo task=detect mode=train data=data.yaml model="yolo11m.pt" epochs=80\\imgsz=640 batch=-1
 
-Esse comando define a tarefa de detecção, usa o modelo base YOLOv11m, executa 80 épocas de treinamento com imagens de 640×640 pixels e deixa o batch size em modo automático. O modelo ajusta seus pesos com base em \textit{backpropagation} e otimização por gradiente, monitorando continuamente as perdas de caixas delimitadoras (box\_loss), classes (cls\_loss) e distribuição de distância de focal (dfl\_loss).
+Esse comando define a tarefa de detecção, usa o modelo base YOLOv11m, executa 80 épocas de treinamento com imagens de 640×640 pixels e deixa o batch size em modo automático. O modelo ajusta seus pesos com base em \textit{backpropagation} e otimização por gradiente, monitorando continuamente as perdas de caixas delimitadoras (\textit{box\_loss}), classes (\textit{cls\_loss}) e distribuição de distância de focal (\textit{dfl\_loss}).
 
-A cada época, o desempenho é validado com base nas métricas \textit{Precision}, \textit{Recall}, mAP@0.5 e mAP@0.5:0.95. O melhor modelo é salvo automaticamente em runs/detect/ufmg\_yolov11m\_run1/weights/best.pt. O processo completo leva menos de 1 hora, com estabilidade nas curvas de perda e sem indícios de \textit{overfitting}, o que indica que o modelo está generalizando bem para os dados de validação.
+A cada época, o desempenho é validado com base nas métricas \textit{Precision}, \textit{Recall}, mAP@0.5 e mAP@0.5:0.95. O melhor modelo é salvo automaticamente na pasta /weights com o nome best.pt. O processo completo leva menos de 1 hora, com estabilidade nas curvas de perda e sem indícios de \textit{overfitting}, o que indica que o modelo está generalizando bem para os dados de validação.
 
 \section{\textbf{Validação e Avaliação de Desempenho do Modelo}}
 
@@ -169,7 +169,7 @@ Para determinar a posição dos objetos, o sistema divide cada \textit{frame} em
 
 O áudio gerado é sincronizado com os frames do vídeo utilizando a biblioteca MoviePy, enquanto o módulo de \textit{debouncing} evita repetição de alertas em posições semelhantes em curto intervalo de tempo. Os limiares de repetição são ajustados conforme a classe: placas de ponto de ônibus e faixas exigem maior espaçamento, enquanto bancos admitem menor intervalo.
 
-O processamento final gera um vídeo com detecções visuais sobrepostas e alertas sonoros integrados, simulando o uso real do sistema. Toda a implementação é feita em Python, com as bibliotecas Ultralytics, OpenCV, gTTS, MoviePy, NumPy e logging. O código está disponível no GitHub\footnote{\url{https://github.com/seu-usuario/seu-repositorio}} e modularizado para facilitar manutenção e reuso. O resultado demonstra que o sistema é capaz de traduzir informações visuais em mensagens acessíveis, aproximando-se de uma solução funcional de tecnologia assistiva.
+O processamento final gera um vídeo com detecções visuais sobrepostas e alertas sonoros integrados, simulando o uso real do sistema. Toda a implementação é feita em Python, com as bibliotecas Ultralytics, OpenCV, gTTS, MoviePy, NumPy e logging. O código está disponível no GitHub\footnote{\url{https://github.com/Matheus-Godinho-Magalhaes/Final_Paper}} e modularizado para facilitar manutenção e reuso. O resultado demonstra que o sistema é capaz de traduzir informações visuais em mensagens acessíveis, aproximando-se de uma solução funcional de tecnologia assistiva.
 
 \section{\textbf{Considerações Éticas e Limitações da Implementação}}
 

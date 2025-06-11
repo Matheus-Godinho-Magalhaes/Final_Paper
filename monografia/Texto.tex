@@ -315,12 +315,12 @@
         
    \textbf{Banca examinadora:} 
 
-   \assinatura{\imprimirorientador \mbox{ } -   (Orientador)} 
+   \assinatura{\imprimirorientador \mbox{ } - (Orientador)} 
    %\assinatura{\textbf{\imprimircoorientadora} (Coorientadora)}
-    \assinatura{Dra. XXXXX – UFMG - (Banca Examinadora) }
-   \assinatura{Dr. XXXXX – UFMG - (Banca Examinadora) }
-   \assinatura{Me. XXXXX – PUC-MG - (Banca Examinadora)}
-  \assinatura{Eng. XXXXX – PUC-MG - (Banca Examinadora)}
+    \assinatura{Eng. Bruno Garkauskas Neto - (Banca Examinadora) }
+   \assinatura{Dr. Henrique Resende Martins - (Banca Examinadora) }
+   \assinatura{Dr. Pedro Bastos Costa - (Banca Examinadora)}
+  
 
    \begin{center}
      \vspace*{0.5cm}
@@ -339,7 +339,7 @@
 \begin{dedicatoria}
      \vspace*{\fill}
  	\begin{flushright}
-  		\textit{Ao Lennon, por ser inspiração. \\ 
+  		\textit{Dedico este trabalho à minha mãe, que sempre acreditou em mim, me incentivou nos estudos e me ensinou, com o exemplo, que com dedicação é possível transformar sonhos em realidade. 
   		}
   	\end{flushright}
 \end{dedicatoria}
@@ -349,7 +349,19 @@
 % Agradecimentos
 % ---------------------
 \begin{agradecimentos}
-ESCREVER AQUI OS AGRADECIMENTOS
+Agradeço, primeiramente, a Deus, por me conceder a vida, a saúde, as oportunidades e a força necessária para chegar até aqui. Sua presença constante guiou meus passos e sustentou minha esperança nos momentos mais difíceis.
+
+À minha família, em especial à minha mãe, minha eterna fonte de inspiração, amor e motivação. Seu apoio incondicional, seus conselhos e sua fé em mim foram fundamentais em todos os momentos da minha jornada acadêmica.
+
+Ao professor Oscar Rodriguez, meu orientador, expresso minha profunda gratidão pela dedicação, paciência e valiosas orientações ao longo do desenvolvimento deste trabalho. Sua confiança e seus ensinamentos foram essenciais para a concretização deste projeto.
+
+À Universidade Federal de Minas Gerais, especialmente à Escola de Engenharia, agradeço pelas oportunidades acadêmicas, pelo ambiente de crescimento intelectual e pelos recursos que me foram oferecidos ao longo do curso.
+
+Aos professores e professoras que contribuíram com sua experiência, conhecimento e compromisso com o ensino, deixo meu sincero reconhecimento. Cada aula e cada troca de saber foi parte importante da minha formação.
+
+Aos amigos que estiveram ao meu lado durante essa trajetória, compartilho minha gratidão pelo companheirismo, apoio e incentivo. Vocês tornaram o caminho mais leve, alegre e possível.
+
+A todos que, direta ou indiretamente, contribuíram para que esta etapa da minha vida se realizasse, meu muito obrigado.
 \end{agradecimentos}
 % ---
 
@@ -360,8 +372,8 @@ ESCREVER AQUI OS AGRADECIMENTOS
  \begin{epigrafe}
      \vspace*{\fill}
  	\begin{flushright}
-  		\textit{“A melhor coisa que você pode fazer por uma pessoa é inspirá-la” \\ 
-  		(Robert Allen Dylan)}
+  		\textit{“A inclusão começa quando olhamos para o outro como alguém que tem tanto direito ao espaço quanto nós.” \\ 
+  		(Marcos Mion)}
   	\end{flushright}
   \end{epigrafe}
 % ---
@@ -372,7 +384,7 @@ ESCREVER AQUI OS AGRADECIMENTOS
 
 % resumo em português
  \begin{resumo}
-Este trabalho propõe o desenvolvimento de uma ferramenta de assistência à locomoção para pessoas com deficiência visual, utilizando visão computacional e algoritmos de inteligência artificial. O sistema foi projetado para identificar objetos de interesse em ambientes universitários, mais especificamente no campus Pampulha da Universidade Federal de Minas Gerais (UFMG). A metodologia adotada consistiu na coleta e anotação de imagens reais do campus, a construção de um dataset customizado e o treinamento de um modelo do algoritmo YOLO11m, com foco na detecção das classes “banco”, “faixa de pedestre” e “placa de ponto de ônibus”. Foram utilizados vídeos gravados em diferentes condições de luminosidade para garantir a diversidade do conjunto de dados. O modelo treinado alcançou métricas robustas de desempenho, com mAP@0.5 de 0.944 e mAP@0.5:0.95 de 0.672 no conjunto de validação, além de elevada precisão e recall para todas as classes. A ferramenta foi avaliada qualitativamente em diferentes cenários do campus, demonstrando bom desempenho na detecção simultânea dos objetos, mesmo em ambientes com iluminação artificial. Os resultados obtidos confirmam a viabilidade da abordagem proposta como prova de conceito funcional para futuras aplicações assistivas em tempo real.
+Este trabalho propõe o desenvolvimento de uma ferramenta de assistência à locomoção para pessoas com deficiência visual, utilizando visão computacional e algoritmos de inteligência artificial. O sistema foi projetado para identificar objetos de interesse em ambientes universitários, mais especificamente no campus Pampulha da Universidade Federal de Minas Gerais (UFMG). A metodologia adotada consistiu na coleta e anotação de imagens reais do campus, a construção de um dataset customizado e o treinamento de um modelo do algoritmo yolo11m, com foco na detecção das classes “banco”, “faixa de pedestre” e “placa de ponto de ônibus”. Foram utilizados vídeos gravados em diferentes condições de luminosidade para garantir a diversidade do conjunto de dados. O modelo treinado alcançou métricas robustas de desempenho, com mAP@0.5 de 0.944 e mAP@0.5:0.95 de 0.672 no conjunto de validação, além de elevada precisão e recall para todas as classes. A ferramenta foi avaliada qualitativamente em diferentes cenários do campus, demonstrando bom desempenho na detecção simultânea dos objetos, mesmo em ambientes com iluminação artificial. Os resultados obtidos confirmam a viabilidade da abordagem proposta como prova de conceito funcional para futuras aplicações assistivas em tempo real.
 
  \vspace{\onelineskip}
     
@@ -388,7 +400,7 @@ Este trabalho propõe o desenvolvimento de uma ferramenta de assistência à loc
  \vspace{\onelineskip}
  
 % \noindent 
-This work proposes the development of a navigation assistance tool for visually impaired individuals, based on computer vision and artificial intelligence algorithms. The system was designed to identify relevant objects in university environments, specifically at the Pampulha campus of the Federal University of Minas Gerais (UFMG). The adopted methodology involved the collection and annotation of real campus images, the construction of a customized dataset, and the training of a YOLO11m algorithm model focused on detecting three object classes: “bench”, “pedestrian crossing”, and “bus stop sign”. Videos recorded under varying lighting conditions were used to ensure dataset diversity. The trained model achieved robust performance metrics, with a validation mAP@0.5 of 0.944 and mAP@0.5:0.95 of 0.672, along with high precision and recall across all classes. The tool was qualitatively evaluated in various campus scenarios, demonstrating reliable detection performance even under artificial lighting. The results confirm the viability of the proposed approach as a functional proof of concept for future real-time assistive applications.
+This work proposes the development of a navigation assistance tool for visually impaired individuals, based on computer vision and artificial intelligence algorithms. The system was designed to identify relevant objects in university environments, specifically at the Pampulha campus of the Federal University of Minas Gerais (UFMG). The adopted methodology involved the collection and annotation of real campus images, the construction of a customized dataset, and the training of a yolo11m algorithm model focused on detecting three object classes: “bench”, “pedestrian crossing”, and “bus stop sign”. Videos recorded under varying lighting conditions were used to ensure dataset diversity. The trained model achieved robust performance metrics, with a validation mAP@0.5 of 0.944 and mAP@0.5:0.95 of 0.672, along with high precision and recall across all classes. The tool was qualitatively evaluated in various campus scenarios, demonstrating reliable detection performance even under artificial lighting. The results confirm the viability of the proposed approach as a functional proof of concept for future real-time assistive applications.
  \vspace{\onelineskip}
     
  \noindent
@@ -416,16 +428,66 @@ This work proposes the development of a navigation assistance tool for visually 
 % -------------------------------------
 % inserir lista de abreviatura e siglas
 % -------------------------------------
-%\begin{siglas}
-% Escrever as siglas aqui
-%\end{siglas}
+\begin{siglas}
+  \item[\textbf{Siglas}]
+  \item[ABNT] Associação Brasileira de Normas Técnicas
+  \item[AI] \textit{Artificial Intelligence} (Inteligência Artificial)
+  \item[API] \textit{Application Programming Interface} (Interface de Programação de Aplicações)
+  \item[AP] \textit{Average Precision} (Precisão Média)
+  \item[CNN] \textit{Convolutional Neural Network} (Rede Neural Convolucional)
+  \item[FP] \textit{False Positive} (Falso Positivo)
+  \item[FN] \textit{False Negative} (Falso Negativo)
+  \item[F1] \textit{F1-Score}
+  \item[GB] \textit{Gigabyte}
+  \item[GPU] \textit{Graphics Processing Unit} (Unidade de Processamento Gráfico)
+  \item[IA] Inteligência Artificial
+  \item[IBGE] Instituto Brasileiro de Geografia e Estatística
+  \item[IoU] \textit{Intersection over Union} (Intersecção sobre União)
+  \item[mAP] \textit{Mean Average Precision} (Precisão Média)
+  \item[mAP@0.5] \textit{Mean Average Precision} com limiar de IoU $\geq$ 0.5
+  \item[mAP@0.5:0.9] \textit{Mean Average Precision} para múltiplos limiares de IoU (0.5 a 0.95)
+  \item[PR] \textit{Precision-Recall}
+  \item[ReLU] \textit{Rectified Linear Unit} (Unidade Linear Retificada)
+  \item[TP] \textit{True Positive} (Verdadeiro Positivo)
+  \item[TPU] \textit{Tensor Processing Unit} (Unidade de Processamento de Tensor)
+  \item[UFMG] Universidade Federal de Minas Gerais
+  \item[VRAM] \textit{Video Random-Access Memory} (Memória de Acesso Aleatório de Vídeo)
+  \item[YOLO] \textit{You Only Look Once}
+  \item[YOLOv11] \textit{You Only Look Once} versão 11
+\end{siglas}
 
 % -------------------------------------
 % inserir lista de simbolo
 % -------------------------------------
 % Lista de símbolos
-%\begin{simbolos}
 
+%\begin{simbolos}
+%  \item[A] Área da seção transversal [m²]
+%  \item[h] Coeficiente convectivo [W/m²K]
+%  \item[R] Resistência elétrica [$\Omega$]
+ % \item[t]	Tempo [s]
+%  \item[T]	Temperatura [K] 
+%  \item[v]	Velocidade [m/s]
+%  \item[V]	Volume [m³]
+
+%  \item[\textbf{Gregos}]
+%  \item[$ \alpha $] Fração de vazio
+%  \item[$ \mu $] Viscosidade dinâmica [N.s/m²]
+%  \item[$ \rho $] Massa específica [kg/m³]
+%  \item[$ \omega $] Velocidade angular [rad/s]
+
+%  \item[\textbf{Subscritos}]
+%  \item[i]	Interno
+%  \item[o]	Externo
+
+% \item[\textbf{Sobrescrito}]
+ % \item[0]	Condição inicial
+ % \item[f] 	Condição final
+
+ % \item[\textbf{Constantes}]
+ % \item[c]	Velocidade da luz no vácuo		$2,9979 \times 10^8\,\, \mathtt{m/s}$
+ % \item[g]	Aceleração gravitacional		$9,7836\,\, \mathtt{m/s}^2$ 
+ % \item[$\sigma$]	Constante de Stefan Boltzmann	$5,6703\times10^{-8}\,\, \mathtt{W/m}^2\mathtt{K}^4$
 %\end{simbolos}
 
  
