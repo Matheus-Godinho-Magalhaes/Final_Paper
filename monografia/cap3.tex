@@ -147,9 +147,9 @@ A execução da validação é feita com o seguinte comando padrão:
 
 !yolo task=detect mode=val model=best.pt data=data.yaml split=val
 
-Os resultados incluem métricas padrão: \textit{Precision} (0.921), \textit{Recall} (0.915), mAP@0.5 (0.944) e mAP@0.5:0.95 (0.672). A performance por classe também é satisfatória, com destaque para “placa\_onibus”, que atinge \textit{Precision} de 1.000 e \textit{Recall} de 0.997. A classe “banco” apresenta desempenho ligeiramente inferior (mAP@0.5:0.95 de 0.615), influenciada por oclusões e variações visuais nos vídeos.
+Os resultados incluem métricas padrão: \textit{Precision} (0.927), \textit{Recall} (0.936), mAP@0.5 (0.967) e mAP@0.5:0.95 (0.670). A performance por classe também é satisfatória, com destaque para “placa\_onibus”, que atinge \textit{Precision} de 1.000 e \textit{Recall} de 0.973. A classe “banco” apresenta desempenho ligeiramente inferior (mAP@0.5:0.95 de 0.681), influenciada por oclusões e variações visuais nos vídeos.
 
-O tempo médio de inferência é de 29,1 ms por imagem, com pré-processamento em torno de 4,0 ms e pós-processamento de 4,8 ms, demonstrando viabilidade para aplicações em tempo quase real. As curvas de perda e gráficos de desempenho gerados pela biblioteca Ultralytics mostram uma convergência estável sem indícios de overfitting. Também é realizada uma validação qualitativa com novos vídeos capturados no campus, confirmando a precisão das detecções em ambientes não vistos pelo modelo.
+O tempo médio de inferência é de 23,2 ms por imagem, com pré-processamento em torno de 2,5 ms e pós-processamento de 4,4 ms, demonstrando viabilidade para aplicações em tempo quase real. As curvas de perda e gráficos de desempenho gerados pela biblioteca Ultralytics mostram uma convergência estável sem indícios de overfitting. Também é realizada uma validação qualitativa com novos vídeos capturados no campus, confirmando a precisão das detecções em ambientes não vistos pelo modelo.
 
 \section{\textbf{Testes em Vídeos Reais e Análise Qualitativa}}
 

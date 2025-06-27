@@ -63,7 +63,7 @@ Conclui-se, com base nas curvas de aprendizado e desempenho, que o modelo conver
 
 \section{\textbf{Avaliação Quantitativa de Desempenho do Modelo Final}}
 
-Finalizado o treinamento, o modelo yolo11m.pt foi avaliado por meio da aplicação do conjunto de pesos otimizados (arquivo best.pt) sobre o subconjunto de validação do \textit{dataset}, contendo 53 imagens e 105 instâncias. Essa validação foi conduzida com a ferramenta Ultralytics, utilizando o comando específico em modo val, responsável por calcular as métricas consolidadas de desempenho para cada classe. Os resultados estão organizados na Tabela \ref{tab:metricas-yolov11m}, que resume as métricas de \textit{precision}, \textit{recall}, mAP@0.5 e mAP@0.5:0.95 por classe e no total.
+Finalizado o treinamento, o modelo yolo11m.pt foi avaliado por meio da aplicação do conjunto de pesos otimizados (arquivo best.pt) sobre o subconjunto de validação do \textit{dataset}, contendo 178 imagens e 306 instâncias. Essa validação foi conduzida com a ferramenta Ultralytics, utilizando o comando específico em modo val, responsável por calcular as métricas consolidadas de desempenho para cada classe. Os resultados estão organizados na Tabela \ref{tab:metricas-yolov11m}, que resume as métricas de \textit{precision}, \textit{recall}, mAP@0.5 e mAP@0.5:0.95 por classe e no total.
 
 \begin{table}[htbp]
 \centering
@@ -74,24 +74,25 @@ Finalizado o treinamento, o modelo yolo11m.pt foi avaliado por meio da aplicaç�
 \toprule
 \textbf{Classe} & \textbf{Imagens} & \textbf{Instâncias} & \textbf{\textit{Precision}} (P) & \textbf{\textit{Recall}} (R) & \textbf{mAP@0.5} & \textbf{mAP@0.5:0.95} \\
 \midrule
-Todas (média)   & 53               & 105                 & 0.921                 & 0.915               & 0.944            & 0.672               \\
-Banco           & 29               & 48                  & 0.848                 & 0.815               & 0.872            & 0.615               \\
-Faixa\_pedestre & 19               & 23                  & 0.915                 & 0.933               & 0.965            & 0.637               \\
-Placa\_onibus   & 34               & 34                  & 1.000                 & 0.997               & 0.995            & 0.764               \\
+Todas (média)   & 178               & 306                 & 0.927                 & 0.936               & 0.967            & 0.670               \\
+Banco           & 67               & 152                  & 0.859                 & 0.941               & 0.942            & 0.681               \\
+Faixa\_pedestre & 86               & 104                  & 0.921                 & 0.893               & 0.966            & 0.606               \\
+Placa\_onibus   & 50               & 50                  & 1.000                 & 0.973               & 0.994            & 0.721               \\
 \bottomrule
 \end{tabular}%
 }
 \end{table}
 
-A análise da média geral evidencia um desempenho expressivo do modelo. A \textit{precision} de 0.921 indica que, entre todas as detecções realizadas, aproximadamente 92\% foram corretas. O \textit{recall} de 0.915 demonstra que o modelo conseguiu identificar a grande maioria dos objetos presentes nas imagens. A métrica mAP@0.5, com valor de 0.944, confirma a alta acurácia da detecção com uma tolerância padrão de Intersecção sobre União (IoU) de 50\%. Já a mAP@0.5:0.95, com valor de 0.672, representa um resultado satisfatório mesmo sob critérios mais rígidos de correspondência entre predição e anotação.
+A análise da média geral evidencia um desempenho expressivo do modelo. A \textit{precision} de 0.927 indica que, entre todas as detecções realizadas, aproximadamente 93\% foram corretas. O \textit{recall} de 0.936 demonstra que o modelo conseguiu identificar a grande maioria dos objetos presentes nas imagens. A métrica mAP@0.5, com valor de 0.967, confirma a alta acurácia da detecção com uma tolerância padrão de Intersecção sobre União (IoU) de 50\%. Já a mAP@0.5:0.95, com valor de 0.670, representa um resultado satisfatório mesmo sob critérios mais rígidos de correspondência entre predição e anotação.
 
-No desempenho individual por classe, destaca-se a classe placa\_onibus, que atingiu \textit{precision} perfeita de 1.000, \textit{recall} de 0.997 e mAP@0.5:0.95 de 0.764 — o melhor entre todas as classes. Este resultado sugere que o modelo identificou com segurança e exatidão as placas de ponto de ônibus, possivelmente devido ao seu formato e cor característicos, que oferecem menor ambiguidade visual.
 
-A classe faixa\_pedestre apresentou resultados igualmente positivos, com \textit{precision} de 0.915 e \textit{recall} de 0.933. O mAP@0.5 de 0.965 reflete o bom desempenho na detecção e delimitação espacial deste tipo de objeto, apesar de sua variabilidade de aparência e iluminação, especialmente sob diferentes condições de piso e sombra.
+No desempenho individual por classe, destaca-se a classe placa\_onibus, que atingiu \textit{precision} perfeita de 1.000, \textit{recall} de 0.973 e mAP@0.5:0.95 de 0.721 — o melhor entre todas as classes. Este resultado sugere que o modelo identificou com segurança e exatidão as placas de ponto de ônibus, possivelmente devido ao seu formato e cor característicos, que oferecem menor ambiguidade visual.
 
-Já a classe banco, embora com métricas consideradas aceitáveis, apresentou o desempenho mais modesto. A \textit{precision} de 0.848 e o \textit{recall} de 0.815 indicam maior incidência de falsos positivos e negativos em relação às demais classes. O valor de mAP@0.5:0.95 de 0.615 confirma essa maior dificuldade, atribuível à diversidade de formas, tamanhos e materiais dos bancos encontrados no campus, além de sua frequente oclusão parcial por pessoas ou vegetação.
+A classe faixa\_pedestre apresentou resultados igualmente positivos, com \textit{precision} de 0.921 e \textit{recall} de 0.893. O mAP@0.5 de 0.966 reflete o bom desempenho na detecção e delimitação espacial deste tipo de objeto, apesar de sua variabilidade de aparência e iluminação, especialmente sob diferentes condições de piso e sombra.
 
-Ressalta-se que o conjunto de validação utilizado é limitado em tamanho, o que pode introduzir certa variabilidade estatística nos resultados. Ainda assim, os padrões observados são consistentes com as análises das curvas de treinamento (Figura \ref{fg-results}) e com as tendências verificadas na matriz de confusão (próxima seção). A velocidade de inferência, próxima de 29 ms por imagem na GPU Tesla T4, também reforça a viabilidade do modelo para aplicações em tempo real.
+Já a classe banco, embora com métricas consideradas aceitáveis, apresentou o desempenho mais modesto. A \textit{precision} de 0.859 e o \textit{recall} de 0.941 indicam maior incidência de falsos positivos e negativos em relação às demais classes. O valor de mAP@0.5 de 0.942 confirma essa maior dificuldade, atribuível à diversidade de formas, tamanhos e materiais dos bancos encontrados no campus, além de sua frequente oclusão parcial por pessoas ou vegetação.
+
+Ressalta-se que o conjunto de validação utilizado é limitado em tamanho, o que pode introduzir certa variabilidade estatística nos resultados. Ainda assim, os padrões observados são consistentes com as análises das curvas de treinamento (Figura \ref{fg-results}) e com as tendências verificadas na matriz de confusão (próxima seção). A velocidade de inferência, próxima de 23 ms por imagem na GPU Tesla T4, também reforça a viabilidade do modelo para aplicações em tempo real.
 
 Em resumo, os resultados quantitativos obtidos confirmam que o modelo yolo11m.pt treinado apresenta desempenho compatível com aplicações práticas de suporte à navegação assistiva, oferecendo boa acurácia de detecção, baixo índice de erro e estabilidade frente a dados não vistos.
 
