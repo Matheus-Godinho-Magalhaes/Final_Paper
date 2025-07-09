@@ -227,6 +227,18 @@ Na Figura \ref{fg-falso_negativo}, evidencia-se um caso de falso negativo, em qu
 
 Conclui-se, com base nesta análise qualitativa, que o modelo é robusto para a maioria dos cenários de uso previstos, mas que ainda existem oportunidades de melhoria, especialmente na redução de falsos positivos da classe banco e faixa de pedestre e no aumento da sensibilidade do modelo em situações de iluminação comprometida. Essas observações visuais corroboram os achados estatísticos apresentados nos tópicos anteriores e oferecem subsídios práticos para ajustes na implementação final do sistema assistivo.
 
+\section{\textbf{Desempenho do Modelo em Ambientes Diurnos e Noturnos}}
+
+A variação das condições de iluminação no campus da UFMG ao longo do dia exerce influência significativa sobre o desempenho do modelo de detecção de objetos. Durante o período diurno, a presença de luz natural abundante favorece o contraste e a nitidez dos elementos visuais nas imagens capturadas, o que resulta em taxas mais altas de detecção correta, melhor definição das caixas delimitadoras e maior confiança nas predições realizadas. 
+
+Nas imagens capturadas em ambientes bem iluminados, como ilustrado na Figura \ref{fg-exemplo-deteccao-dia}, o modelo obteve níveis de precisão superiores a 0.80 na maioria das detecções, especialmente para a classe placa\_onibus, que apresenta padrões visuais distintos. A nitidez dos contornos e a ausência de ruído visual contribuem para que o algoritmo execute a segmentação com acurácia.
+
+Por outro lado, em condições noturnas ou de baixa iluminação, observou-se uma leve degradação no desempenho do modelo. Como discutido anteriormente nas Figuras \ref{fg-baixa_luminosidade} e \ref{fg-falso_negativo} a redução do contraste e a presença de sombras comprometem a clareza dos objetos, levando a variações na qualidade das caixas preditas e a pequenas quedas nos níveis de confiança. Nessas condições, é comum o aumento da ocorrência de falsos negativos, especialmente para objetos parcialmente ocultos ou mal iluminados, como faixas de pedestre próximas a áreas arborizadas.
+
+Ainda que o modelo treinado tenha demonstrado robustez para operar em períodos noturnos, esses resultados evidenciam a importância de expandir o conjunto de dados com mais exemplos coletados durante a noite e de aplicar técnicas específicas de pré-processamento de imagem ou calibração de limiar para ambientes de baixa luz.
+
+A análise comparativa entre os períodos mostra que a maior vulnerabilidade está associada à iluminação artificial irregular ou insuficiente, não necessariamente ao horário em si. Assim, medidas como o reforço da diversidade luminosa no dataset e o uso de sensores complementares podem ser exploradas como estratégias futuras para mitigar essa limitação.
+
 \section{\textbf{Discussão Consolidada dos Resultados e Implicações para a Ferramenta Assistiva}}
 
 A consolidação das análises quantitativa e qualitativa permite uma avaliação abrangente do modelo no que diz respeito à sua viabilidade como núcleo de uma ferramenta assistiva para pessoas com deficiência visual no campus da UFMG. Os resultados obtidos ao longo das avaliações apontam para um desempenho consistente, com alto potencial de aplicação prática e algumas limitações pontuais que podem ser endereçadas em fases posteriores do projeto.
